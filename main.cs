@@ -47,46 +47,50 @@ namespace some {
         }
     }
     class Program {
-        public void Input(string choice, char pick) {
+        public void Input(string choice) {
             string name = "None";
+            char pick = 'y';
             int age = 0;
-            Console.WriteLine("What would you do with that thing my friend");
-            choice = Console.ReadLine();
-            Console.WriteLine("Enter your name: ");
-            name = Console.ReadLine();
-            Console.WriteLine("Enter your age: ");
-            age = int.Parse(Console.ReadLine());
 
-            if(choice.ToLower() == "person" || choice.ToLower() == "p") {
-                Person per1 = new Person(name, age);
-                per1.Greet();
-            }
-            else if(choice.ToLower() == "teacher" || choice.ToLower() == "t") {
-                Teacher per1 = new Teacher(name, age);
-                Console.WriteLine("Enter the subject: ");
-                per1.Subject = Console.ReadLine();
-                per1.Greet();
-            }
-            else if(choice.ToLower() == "student" || choice.ToLower() == "s") {
-                Student per1 = new Student(name, age);
-                Console.WriteLine("Enter the class name: ");
-                per1.ClassName = Console.ReadLine();
-                per1.Greet();
+            while (pick == 'y') {
+                Console.WriteLine("What would you do with that thing my friend");
+                choice = Console.ReadLine();
+                Console.WriteLine("Enter your name: ");
+                name = Console.ReadLine();
+                Console.WriteLine("Enter your age: ");
+                age = int.Parse(Console.ReadLine());
+
+                if(choice.ToLower() == "person" || choice.ToLower() == "p") {
+                    Person per1 = new Person(name, age);
+                    per1.Greet();
+                }
+                else if(choice.ToLower() == "teacher" || choice.ToLower() == "t") {
+                    Teacher per1 = new Teacher(name, age);
+                    Console.WriteLine("Enter the subject: ");
+                    per1.Subject = Console.ReadLine();
+                    per1.Greet();
+                }
+                else if(choice.ToLower() == "student" || choice.ToLower() == "s") {
+                    Student per1 = new Student(name, age);
+                    Console.WriteLine("Enter the class name: ");
+                    per1.ClassName = Console.ReadLine();
+                    per1.Greet();
+                }
+
+                Console.WriteLine("Do you want to continue? (y for yes, n for no)");
+                pick = char.Parse(Console.ReadLine());
             }
             
-            Console.WriteLine("Do you want to continue? (y for yes, n for no)");
-            pick = char.Parse(Console.ReadLine());
-
-            if (pick == 'y') {
+            // Recursion
+            /* if (pick == 'y') {
                 Program prog = new Program();
-                prog.Input(choice, pick);
-            }
+                prog.Input(choice);
+            } */
         }
         static void Main(string[] args) {
-            string choice = "sada";   
-            char pick = 'y';                  
+            string choice = "sada";                    
             Program prog = new Program();
-            prog.Input(choice, pick);
+            prog.Input(choice);
         }
     }
 }
